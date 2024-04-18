@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roll Dice Client</title>
+    <script>
+        function rollDice() {
+            fetch('http://localhost:8080/rolldice')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('result').innerText = data;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Failed to fetch from the server. Make sure the server is running.');
+                });
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Roll Dice</h1>
+    <button onclick="rollDice()">Roll</button>
+    <p>Result: <span id="result">Not rolled yet</span></p>
+</body>
+
+</html>
