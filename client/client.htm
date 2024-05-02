@@ -7,7 +7,7 @@
     <title>Roll Dice Client</title>
     <script>
         function rollDice() {
-            fetch('http://localhost:8080/rolldice')
+            fetch('http://localhost:5000/rolldice')
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById('result').innerText = data;
