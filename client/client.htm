@@ -6,7 +6,6 @@
     <title>Roll Dice Client</title>
     <script>
         function rollDice() {
-            // Get the username from the input box
             const username = document.getElementById('username').value;
             const url = `http://localhost:8080/${username}`;
 
@@ -17,14 +16,14 @@
                 })
                 .catch(error => {
                     console.error('Error:', error);
-                    alert('Failed to fetch from the server. Make sure the server is running.');
+                    // Display the error message on the screen instead of an alert
+                    document.getElementById('result').innerText = 'Failed to fetch from the server. Make sure the server is running.';
                 });
         }
     </script>
 </head>
 <body>
     <h1>Roll Dice</h1>
-    <!-- Input for the username -->
     <input type="text" id="username" placeholder="Enter username" value="user1">
     <button onclick="rollDice()">Roll</button>
     <p>Result: <span id="result">Not rolled yet</span></p>
