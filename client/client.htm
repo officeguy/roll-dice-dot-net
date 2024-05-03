@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roll Dice Client</title>
     <script>
         function rollDice() {
-            fetch('http://localhost:5000/rolldice')
+            // Get the username from the input box
+            const username = document.getElementById('username').value;
+            const url = `http://localhost:8080/${username}`;
+
+            fetch(url)
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById('result').innerText = data;
@@ -19,11 +22,11 @@
         }
     </script>
 </head>
-
 <body>
     <h1>Roll Dice</h1>
+    <!-- Input for the username -->
+    <input type="text" id="username" placeholder="Enter username">
     <button onclick="rollDice()">Roll</button>
     <p>Result: <span id="result">Not rolled yet</span></p>
 </body>
-
 </html>
